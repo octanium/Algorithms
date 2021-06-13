@@ -3,54 +3,22 @@ let myArr = [];
 const array =  myArr.length ? myArr : generator.randomArray({min: -10, max: 5, elements: 10});
 console.log(array);
 
-// Brute-force solution O(n^3)
-let maxSum = -Infinity;
-let start = 0;
-let end = 0;
-for (let i=1; i<=array.length; i++) { // i = length of subarray
-    // console.log('----------------------------');
-    // console.log('size = ', i);
-    // console.log('----------------------------');
-    for (let j=0; j<array.length; j++) { // j = start index of subarray
-        if ((array.length - j) < i) continue;
-        // console.log('start from index = ', j, ' to ', array.length);
-        let sum = 0;
-        let k = j;
-        while (k<=(j+i-1)) {
-            sum = sum + array[k];
-            // console.log('k = ', k, ' sum = ', sum);
-            k++;
-        }
-        if (sum > maxSum) {
-            // console.log(sum,  ' > ', maxSum, 'maxsum =  ', sum);
-            maxSum = sum; start = j; end = k}
-        // else console.log(sum,  ' < ', maxSum, ' skipping..');
-    }
-} 
-
-console.log(maxSum, start, end-1);
 
 // Brute-force solution O(n^2) // Preventing recomputation of sum
-maxSum = -Infinity;
-start = 0;
-end = 0;
-for (let j=0; j<array.length; j++) {
-    let sum=0;
-    // console.log('---------------------------');
-    // console.log('start-index = ', j, ' sum = ', sum);
-    // console.log('---------------------------');
-    for (let i=j; i<array.length; i++) {
-        // console.log('///////////////////////////////');
-        // console.log('size = ', i+1, ' sum = ', sum, ' + ', array[i], ' = ', sum + array[i]);
-        sum = sum + array[i];
-        if (sum > maxSum) {
-            // console.log(sum, '>', maxSum, ' maxsum = ', sum);
-            maxSum = sum;
+const max = (a) => {
+    for (let index = 0; index < a.length; index++) {
+        newSum=0;
+        for (j=index; j<a.length; j++) {
+            newSum = newSum + a[j];
+            if (sum < newSum) {
+                beg = index;
+                end = j;
+                sum = newSum;
+                // console.log('hii..', sum, beg, end, index, j);
+            }
         }
-        // else console.log(sum, '<', maxSum, ' skipping... ');
     }
-}
-console.log(maxSum);
+};
 
 
 // Divide and Conquer Solution O(nlog(n))

@@ -1,4 +1,5 @@
-// using Randomised partition, Expected Running time ET(n) = O(n)
+// using Randomised Selection,
+// Expected Running time ET(n) = O(n)
 // Worst case T(n) = T(n-1)+O(n) => O(n^2)
 const Ar =  [9, 31, 28, 18, 27, 8, 21, 39, 6, 49, 13];
 

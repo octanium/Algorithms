@@ -57,7 +57,7 @@ const subsetSum2tabulated = (list, target) => {
     dp[0] = true;
     for (let i=0; i<=target; i++) {
         for (let num of list) {
-            if (dp[i] === true && (i+num) <= target) dp[i+num] = true;
+            if (dp[i] === true && (i+num) <= target) dp[i+num] = true; // Forward Dynamic Programming, update future values
         }
     }
     console.log(dp);
